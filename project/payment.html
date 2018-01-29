@@ -1,0 +1,34 @@
+		<div class="w3-container w3-center">
+			<h1>Welcome to PIZZERIA!!!</h1>
+			<button style="float:right"class="w3-btn w3-green" ng-click="logout()">Log Out</button>
+			<h2>Your Cart</h2>
+		</div>
+		<br>
+
+		<div ng-show="cartlist" class="w3-container w3-half">
+			<ul class="w3-ul w3-card-4">
+				<li class="w3-bar" ng-repeat="cartitem in cartlist">
+					<!--<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right" ng-click="removeitem(cartitem.menuItem.menuItemId)">×</span>	<!--write function to remove-->
+					<div class="w3-bar-item">
+						<span class="w3-large">{{cartitem.menuItem.menuItemName}}</span>
+						<span class="w3-large">Quantity:{{cartitem.qty}}</span>
+						<!--<button style="float:right"class="w3-btn w3-green" ng-click="subfromcart(cartitem.menuItem.menuItemId);cartitem.qty=cartitem.qty-1;">Subtract one from cart</button>
+						<button style="float:right"class="w3-btn w3-green" ng-click="addtocart(cartitem.menuItem.menuItemId);cartitem.qty=cartitem.qty+1;">Add One more</button>
+						-->
+					</div>
+				</li>
+			</ul>
+			<h1>Final Amount to be paid :  <span class="label label-default">{{billAmt}}</span></h1>
+		</div>
+	
+		
+		<div ng-show="coupons" class="w3-container w3-half">
+			<ul class="w3-ul w3-card-4">
+				<li class="w3-bar" ng-hide="couponselected" ng-repeat="coupon in coupons">
+					<button class="w3-button w3-blue" ng-click="addcoupon(coupon)">Add coupen {{coupon.couponId}} | Discount : {{coupon.discountAmount}}</button>
+				</li>
+			</ul>
+		</div>
+		<div class="w3-container">
+		<button class="w3-button w3-black" ng-click="makepayment()"><a href='#!/thankyou'>Payment &raquo;</a></button>
+		</div>

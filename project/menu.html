@@ -1,0 +1,32 @@
+<div class="w3-container w3-center">
+			<h2>Welcome to PIZZERIA!!!</h2>
+			<button style="float:right"class="w3-btn w3-green" ng-click="logout()">Log Out</button>
+			<h3>Menu</h3>
+		</div>
+		<!--button ng-click="refresh()">Click to refresh menu</button-->
+					<!--
+	
+					<div class="w3-card-4" ng-repeat="menu in menulist" style="width="40px">
+						<header class="w3-container w3-blue" style="width=30%">
+							<h3 style="width: 30%">{{menu.menuItemName}}</h3>
+						</header>
+						<div>
+							<img src="farmHouse.jpg" alt="pizza" style="width:30%">
+						</div>
+						<footer class="w3-container w3-blue">
+							<h3>{{menu.description}}</h3>
+							<h3>{{menu.price}}</h3>
+							<button class="w3-btn w3-green" ng-click="addtocart(menu.menuItemId)">Buy This!</button>
+						</footer>
+					</div>
+					-->
+
+					<div ng-repeat="menu in menulist" style="width="30%">
+						<h3>{{menu.menuItemName}}</h3>
+					<img src="farmHouse.jpg" class="w3-round-small" alt="pizza" style="width:30%">
+					<h3>Description:{{menu.description}}</h3>
+							<h3>{{menu.price}}</h3>
+							<button class="w3-btn w3-green" ng-click="addtocart(menu.menuItemId)">Buy This!</button>
+						
+					</div>
+		</div>

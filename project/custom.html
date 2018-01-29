@@ -1,0 +1,37 @@
+<div class="w3-container w3-center">
+			<h1>Welcome to PIZZERIA!!!</h1>
+			<button style="float:right"class="w3-btn w3-green" ng-click="logout()">Log Out</button>
+			<h2>Customize Pizza</h2>
+		</div>
+		<br>
+		
+
+
+		<div class="w3-container w3-half w3-center">
+			<h1>Your Custom Pizza Content</h1>
+			<ul class="w3-ul w3-card-4">
+				<div>
+					<li class="w3-bar" ng-repeat="ingc in ingcust">
+						<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right" ng-click="deling(ingc)">×</span>	<!--write function to remove-->
+						<div class="w3-bar-item w3-large" >{{getname(ingc)}}</div>
+					</li>
+				</div>
+				
+			</ul>
+		</div>
+		
+		
+		<div class="w3-container w3-half w3-center">
+			<div class="w3-margin">
+				<button class="w3-button w3-blue" ng-click="addtocart()">Add to cart</button>
+			</div>
+			
+			<div class="w3-margin">
+				<button class="w3-button w3-blue"><a href='#!/menu'>back to Menu</a></button>
+			</div>
+			<div class="w3-margin" ng-repeat="ing in inglist">
+					<button class="w3-bar-item w3-button w3-blue" ng-click="adding(ing.ingrId,ing.ingrName)">Add {{ing.ingrName}}</button>
+				</div>
+			</div>
+		
+		</div>

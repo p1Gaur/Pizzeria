@@ -1,0 +1,151 @@
+		<div class="w3-container w3-center">		<!--variable for ng-show-->
+			<h1>Welcome to PIZZERIA!!!</h1>
+			<button style="float:right"class="w3-btn w3-green" ng-click="logout()">Log Out</button>
+			<h2>Your Cart</h2>
+		</div>
+		
+		<br>
+		
+		<div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:20%">		<!--sidebar-->
+				<button class="w3-bar-item w3-button tablink" ng-click="VO=1;VF=0;UI=0;SL=0">View Order</button>
+				<button class="w3-bar-item w3-button tablink" ng-click="VO=0;VF=1;UI=0;SL=0">View Feedback</button>
+				<button class="w3-bar-item w3-button tablink" ng-click="VO=0;VF=0;UI=1;SL=0">Update Item</button>
+				<button class="w3-bar-item w3-button tablink" ng-click="VO=0;VF=0;UI=0;SL=1">Send Location</button>			<!--sidebar end-->
+		</div>
+
+		<div style="margin-left:25%">			
+			<div class="w3-container" ng-show="VO">			<!--view order table start-->
+				<div class="w3-container">
+					<h2>Order Page</h2>
+					<table class="w3-table-all w3-hoverable">
+						<thead>
+							<tr class="w3-light-grey">
+								<th>Order order Id</th>
+								<th>Customer Id</th>
+								<th>Delivery Address</th>
+								<th>Price</th>
+								<th>Contact</th>
+								<th>status</th>
+							</tr>
+						</thead>
+						<tr onclick="document.getElementById('id01').style.display='block'" ng-click="showdetails(item)" ng-repeat="item in orderlist">
+							<td>{{item.orderId}}</td>
+							<td>{{item.custId}}</td>
+							<td>{{item.amount}}</td>
+							<td>{{item.deliveryAddress}}</td>
+							<td>{{item.contactNo}}</td>
+							<td>{{item.ordStatus}}</td>
+						</tr>
+					</table>
+				</div>														<!--view order table end-->
+			
+				<div class="w3-container">  
+					<div id="id01" class="w3-modal">
+						<div class="w3-modal-content w3-card-4">
+							<header class="Order Id"> 
+								<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+								<h2>Order Id : {{disp.orderId}}</h2>
+							</header>
+							<div class="w3-container" ng-repeat="items in disp.orderItems">
+								<p>Item id: {{items.menuItemId}}</p>
+								<p>Item qty: {{items.quantity}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="Paris" class="w3-container" ng-show="VF">			<!--view feedback table start-->
+				<div class="w3-container">
+					<h2>FeedBack Page</h2>
+					<table class="w3-table-all w3-hoverable">
+						<thead>
+							<tr class="w3-light-grey">
+								<th>Order Id</th>
+								<th>feedback</th>
+							</tr>
+						</thead>
+
+						<tr ng-repeat="feed in feedback">
+							<td>{{feed.orderId}}</td>
+							<td>{{feed.feedbackText}}</td>
+						</tr>
+					</table>
+				</div>										<!--view feedback table end-->
+			</div>
+
+			<div class="w3-container" ng-show="UI">			<!--update item button-->
+				<span><button class="w3-button w3-black w3-round-small" ng-click="AI=1;DI=0;AP=0;DP=0">Add Ingredient</button></span>
+				<span><button class="w3-button w3-black w3-round-small" ng-click="AI=0;DI=1;AP=0;DP=0">Change Ingredient Status</button></span>
+				<span><button class="w3-button w3-black w3-round-small" ng-click="AI=0;DI=0;AP=1;DP=0">Add Pizza</button></span>
+				<span><button class="w3-button w3-black w3-round-small" ng-click="AI=0;DI=0;AP=0;DP=1">Change pizza Status</button></span>
+				
+				<form class="w3-container" ng-show="AI" action="http://localhost:8080/SpringHibernateExample/admin/addingredient" method="POST">				<!--Add Ingredient-->
+					<p>      
+						<label class="w3-text-brown"><b>Ingredient Name</b></label>
+						<input class="w3-input w3-border w3-sand" name="ingredientName" type="text">
+					</p>
+					<p>      
+						<label class="w3-text-brown"><b>Price</b></label>
+						<input class="w3-input w3-border w3-sand" name="price" type="text">
+					</p>
+					<p>
+						<button class="w3-btn w3-brown">ADD Ingredient</button>
+					</p>
+				</form>
+				
+				<form class="w3-container" ng-show="AP" action="http://localhost:8080/SpringHibernateExample/admin/addmenuitem" method="POST">						<!--Add Pizza-->
+					<p>      
+						<label class="w3-text-brown"><b>Pizza Name</b></label>
+						<input class="w3-input w3-border w3-sand" name="pizzaName" type="text">
+					</p>
+					<p>      
+						<label class="w3-text-brown"><b>Price</b></label>
+						<input class="w3-input w3-border w3-sand" name="price" type="text">
+					</p>
+					<p>
+						<button class="w3-btn w3-brown">ADD</button>
+					</p>
+				</form>
+				
+				<form class="w3-container" ng-show="DP">					<!--Delete Pizza-->
+					<p>      
+						<label class="w3-text-brown"><b>Pizza Id</b></label>
+						<input class="w3-input w3-border w3-sand" name="pizzaId" type="text" ng-model=pizzaId>
+					</p>
+					
+					<p>
+						<button class="w3-btn w3-brown" ng-click="togglepizza()">ToggleStatus</button>
+					</p>
+				</form>
+				
+				<form class="w3-container" ng-show="DI">				<!--Delete Ingredient-->
+					<p>      
+						<label class="w3-text-brown"><b>Ingredient Id</b></label>
+						<input class="w3-input w3-border w3-sand" name="ingredientId" type="text" ng-model=ing>
+					</p>
+					
+					<p>
+						<button class="w3-btn w3-brown" ng-click="toggleingredient()">ToggleStatus</button>
+					</p>
+				</form>
+				
+			</div>
+			  
+			  <div class="w3-container city" ng-show="SL">
+				<form class="w3-container" action="http://localhost:8080/SpringHibernateExample/admin/sendaddress" method="POST">						<!--location send form-->
+					<p>      
+						<label class="w3-text-brown"><b>Order Id</b></label>
+						<input class="w3-input w3-border w3-sand" name="orderId" type="text">
+					</p>
+					
+					<p>      
+						<label class="w3-text-brown"><b>Location</b></label>
+						<input class="w3-input w3-border w3-sand" name="location" type="text">
+					</p>
+					
+					<p>
+						<button class="w3-btn w3-brown">Send</button>
+					</p>
+				</form>
+			  </div>
