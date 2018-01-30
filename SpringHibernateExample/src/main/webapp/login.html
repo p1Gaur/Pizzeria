@@ -1,0 +1,67 @@
+		<div class="w3-container w3-center">
+			<h2>Welcome to PIZZERIA!!!</h2>
+			<h3>Log In/Sign Up to Continue</h3>
+		</div>
+
+		<div class="w3-row ">
+			<div class="w3-half w3-container">
+				<div class="w3-card-4">
+					<div class="w3-container w3-blue">
+						<h2>Log In</h2>
+					</div>
+					<form action="http://localhost:8080/SpringHibernateExample/user/login" class="w3-container" method="POST">
+						<p>      
+							<label class="w3-text-brown"><b>User Name</b></label>
+							<input class="w3-input w3-border w3-sand" name="username" type="text" ng-model=userName required>
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>Password</b></label>
+							<input class="w3-input w3-border w3-sand" name="password" type="password" ng-model="password" required>
+						</p>
+						<p>
+							<button class="w3-btn w3-blue">Log In</button>
+						</p>
+					</form>
+				</div>   
+			</div>
+			<div class="w3-half w3-container ">
+				<div class="w3-card-4">
+					<div class="w3-container w3-blue">
+						<h2>Register</h2>
+					</div>
+					<form action="http://localhost:8080/SpringHibernateExample/user/register" class="w3-container" method="POST">
+						<p>      
+							<label class="w3-text-brown"><b>Full Name</b></label>
+							<input class="w3-input w3-border w3-sand" name="fullName" type="text">
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>User Name</b></label>
+							<input class="w3-input w3-border w3-sand" name="userName" type="text">
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>Email ID</b></label>
+							<input class="w3-input w3-border w3-sand" name="email" type="email">
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>Phone Number</b></label>
+							<input class="w3-input w3-border w3-sand" name="phoneNumber" type="tel">
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>Address</b></label>
+							<input class="w3-input w3-border w3-sand" name="address" type="text">
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>Password</b></label>
+							<input class="w3-input w3-border w3-sand" name="password" type="password">
+						</p>
+						<p>      
+							<label class="w3-text-brown"><b>Confirm Password</b></label>
+							<input class="w3-input w3-border w3-sand" name="confirmPassword" type="password">
+						</p>
+						<p>
+							<button class="w3-btn w3-blue">Register</button>
+						</p>
+					</form>
+				</div>   
+			</div>
+		</div>
